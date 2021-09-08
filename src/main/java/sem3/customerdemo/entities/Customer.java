@@ -1,6 +1,11 @@
 package sem3.customerdemo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity(name = "customer_table")
@@ -18,12 +23,51 @@ public class Customer {
     @Column(length=120,nullable = false,unique = true)
     private String email;
 
+    @Column(length = 12)
+    private String phone;
+
+    @CreationTimestamp
+    private LocalDateTime dateCreated;
+
+    @UpdateTimestamp
+    private LocalDateTime dateEdited;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDateTime getDateEdited() {
+        return dateEdited;
+    }
+
+    public void setDateEdited(LocalDateTime dateEdited) {
+        this.dateEdited = dateEdited;
+    }
+
+
+
     public Customer() {
     }
     public Customer(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public int getCustomerId() {
