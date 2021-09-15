@@ -30,14 +30,12 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public CustomerDTO addCustomer(CustomerInput customerInput) {
         Customer newCustomer = customerRepository.save(CustomerInput.customerFromCustomerInput(customerInput));
-        newCustomer.setDateCreated(null);
         return new CustomerDTO(newCustomer);
     }
 
     @Override
     public CustomerDTO findCustomerById(int id) {
         Customer found = customerRepository.findById(id).orElseThrow();
-        found.setDateCreated(null);
         return new CustomerDTO(found);
     }
 
