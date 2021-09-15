@@ -15,10 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 @ApiModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerDTO {
@@ -36,8 +34,6 @@ public class CustomerDTO {
         this.lastName = c.getLastName();
         this.email = c.getEmail();
         this.phone = c.getPhone();
-        //Observe we are not setting dateCreated
-
     }
 
     public CustomerDTO(Integer customerId, String firstName, String lastName) {
@@ -61,8 +57,7 @@ public class CustomerDTO {
     /**
      * Use this method to get List<CustomerDTO> either with all fields from the DB, except dateCreated (see constructor)
      * or with only firstName and lastName if simple=true
-     *
-     * @param all    The List of Customers (Entities) that must be converted
+     * @param all The List of Customers (Entities) that must be converted
      * @param simple If true, only firsName and lastName are included
      * @return
      */

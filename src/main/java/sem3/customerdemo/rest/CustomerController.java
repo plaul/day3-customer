@@ -31,6 +31,7 @@ public class CustomerController {
 
     @GetMapping(value = "/{id}")
     Customer getCustomer(@PathVariable int id){
+
         return customerRepository.findById(id).orElseThrow();
     }
 
